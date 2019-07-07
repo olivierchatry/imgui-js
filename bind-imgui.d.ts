@@ -42,6 +42,7 @@ type ImGuiSelectableFlags = number;
 type ImGuiComboFlags = number;
 type ImGuiTabBarFlags = number;
 type ImGuiTabItemFlags = number;
+type ImGuiDockNodeFlags = number;
 type ImGuiFocusedFlags = number;
 type ImGuiHoveredFlags = number;
 type ImGuiDragDropFlags = number;
@@ -1390,7 +1391,8 @@ EndDragDropTarget(): void;
 PushClipRect(clip_rect_min: Readonly<interface_ImVec2>, clip_rect_max: Readonly<interface_ImVec2>, intersect_with_current_clip_rect: boolean): void;
 // IMGUI_API void          PopClipRect();
 PopClipRect(): void;
-
+// Docking
+DockSpace(id: ImGuiID, size: Readonly<interface_ImVec2>, flags: ImGuiDockNodeFlags): void;
 // Focus
 // (FIXME: Those functions will be reworked after we merge the navigation branch + have a pass at focusing/tabbing features.)
 // (Prefer using "SetItemDefaultFocus()" over "if (IsWindowAppearing()) SetScrollHere()" when applicable, to make your code more forward compatible when navigation branch is merged)

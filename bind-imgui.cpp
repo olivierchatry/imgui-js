@@ -2704,6 +2704,14 @@ EMSCRIPTEN_BINDINGS(ImGui) {
         return emscripten::val::null(); // TODO
     }));
 
+    // Docking support ( beta )
+#if defined(IMGUI_HAS_DOCK) 
+    emscripten::function("DockSpace", FUNCTION(void, (ImGuiID id, emscripten::val size, ImGuiDockNodeFlags flags), {
+      return ImGui::DockSpace(id, import_ImVec2(size), flags);
+    }));
+    emscripten::function("GetWindowDockID", &ImGui::GetWindowDockID);
+    emscripten::function("IsWindowDocked", &ImGui::IsWindowDocked);
+#endif
     // Clipping
     // IMGUI_API void          PushClipRect(const ImVec2& clip_rect_min, const ImVec2& clip_rect_max, bool intersect_with_current_clip_rect);
     emscripten::function("PushClipRect", FUNCTION(void, (emscripten::val clip_rect_min, emscripten::val clip_rect_max, bool intersect_with_current_clip_rect), {
